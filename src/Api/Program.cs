@@ -25,10 +25,6 @@ namespace TesteQualyteam.Api
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     context.Database.Migrate();
-
-                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-
-                    await ApplicationDbContextSeed.SeedAsync(userManager);
                 }
                 catch (Exception ex)
                 {
