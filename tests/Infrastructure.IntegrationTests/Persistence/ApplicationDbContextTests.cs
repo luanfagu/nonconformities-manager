@@ -41,7 +41,7 @@ namespace TesteQualyteam.Infrastructure.IntegrationTests.Persistence
                     PersistedGrants = new TableConfiguration("PersistedGrants")
                 });
 
-            _sut = new ApplicationDbContext(options, operationalStoreOptions, _currentUserServiceMock.Object, _dateTimeMock.Object);
+            _sut = new ApplicationDbContext(options, operationalStoreOptions, _dateTimeMock.Object);
 
             _sut.TodoItems.Add(new TodoItem
             {

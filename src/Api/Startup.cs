@@ -15,6 +15,7 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using System.Linq;
 using TesteQualyteam.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace TesteQualyteam.Api
 {
@@ -36,7 +37,7 @@ namespace TesteQualyteam.Api
             services.AddApplication();
             services.AddInfrastructure(Configuration, Environment);
 
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
+            // services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
 
@@ -58,13 +59,6 @@ namespace TesteQualyteam.Api
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "TesteQualyteam API";
-                configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
-                {
-                    Type = OpenApiSecuritySchemeType.ApiKey,
-                    Name = "Authorization",
-                    In = OpenApiSecurityApiKeyLocation.Header,
-                    Description = "Type into the textbox: Bearer {your JWT token}."
-                });
 
                 configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
             });
@@ -98,9 +92,9 @@ namespace TesteQualyteam.Api
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseIdentityServer();
-            app.UseAuthorization();
+            // app.UseAuthentication();
+            // app.UseIdentityServer();
+            // app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

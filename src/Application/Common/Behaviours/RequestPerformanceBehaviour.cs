@@ -11,18 +11,18 @@ namespace TesteQualyteam.Application.Common.Behaviours
     {
         private readonly Stopwatch _timer;
         private readonly ILogger<TRequest> _logger;
-        private readonly ICurrentUserService _currentUserService;
+        // private readonly ICurrentUserService _currentUserService;
         private readonly IIdentityService _identityService;
 
         public RequestPerformanceBehaviour(
             ILogger<TRequest> logger, 
-            ICurrentUserService currentUserService,
+            // ICurrentUserService currentUserService,
             IIdentityService identityService)
         {
             _timer = new Stopwatch();
 
             _logger = logger;
-            _currentUserService = currentUserService;
+            // _currentUserService = currentUserService;
             _identityService = identityService;
         }
 
@@ -39,11 +39,11 @@ namespace TesteQualyteam.Application.Common.Behaviours
             if (elapsedMilliseconds > 500)
             {
                 var requestName = typeof(TRequest).Name;
-                var userId = _currentUserService.UserId;
-                var userName = await _identityService.GetUserNameAsync(userId);
+                // var userId = _currentUserService.UserId;
+                // var userName = await _identityService.GetUserNameAsync(userId);
 
                 _logger.LogWarning("TesteQualyteam Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@Request}",
-                    requestName, elapsedMilliseconds, userId, userName, request);
+                    requestName, elapsedMilliseconds, request);
             }
 
             return response;

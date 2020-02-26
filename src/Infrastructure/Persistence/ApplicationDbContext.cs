@@ -9,17 +9,18 @@ using Microsoft.Extensions.Options;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace TesteQualyteam.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
+    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext 
     {
         private readonly IDateTime _dateTime;
 
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions,
-            ICurrentUserService currentUserService,
+            // ICurrentUserService currentUserService,
             IDateTime dateTime) : base(options, operationalStoreOptions)
         {
             _dateTime = dateTime;

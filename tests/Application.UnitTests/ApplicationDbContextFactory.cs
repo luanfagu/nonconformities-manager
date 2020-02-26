@@ -34,7 +34,7 @@ namespace TesteQualyteam.Application.UnitTests.Common
 
             var context = new ApplicationDbContext(
                 options, operationalStoreOptions,
-                currentUserServiceMock.Object, dateTimeMock.Object);
+                dateTimeMock.Object);
 
             context.Database.EnsureCreated();
 
