@@ -1,8 +1,11 @@
+using System;
+using System.Linq;
 using TesteQualyteam.Application.Common.Interfaces;
 using TesteQualyteam.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Internal;
 using TesteQualyteam.Domain.Enums;
 
 namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformity
@@ -14,7 +17,7 @@ namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformit
         public class CreateNonConformitiesCommandHandler : IRequestHandler<CreateNonConformityCommand, long>
         {
             private readonly IApplicationDbContext _context;
-            
+
             public CreateNonConformitiesCommandHandler(IApplicationDbContext context)
             {
                 _context = context;
@@ -22,10 +25,17 @@ namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformit
 
             public async Task<long> Handle(CreateNonConformityCommand request, CancellationToken cancellationToken)
             {
+                var dateTime = new DateTime();
+                var lastIdentity = _context.NonConformities.Where(n => n.Year == dateTime.Year)
+                    .OrderByDescending(n => n.Identity).Select(n => n.Identity).FirstOrDefault();
+
                 var entity = new NonConformity
                 {
                     Description = request.Description
                     , Status = (int) NonConformityStatus.Open
+                    , Year = dateTime.Year
+                    , Identity = lastIdentity + 1
+                    , Revision = 0
                 };
 
                 _context.NonConformities.Add(entity);

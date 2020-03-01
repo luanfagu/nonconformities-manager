@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TesteQualyteam.Application.NonConformities.Commands.CreateNonConformity;
+using TesteQualyteam.Application.NonConformities.Commands.CreateNonConformityRevision;
 using TesteQualyteam.Application.NonConformities.Commands.UpdateNonConformityStatus;
 using TesteQualyteam.Application.NonConformities.Queries.GetNonConformity;
 using TesteQualyteam.Application.TodoItems.Commands.CreateTodoItem;
@@ -35,14 +36,10 @@ namespace TesteQualyteam.Api.Controllers
 
             if (command.Status == (int) NonConformityStatus.Ineffective)
             {
-                var nonConformity = await Mediator.Send(new GetNonConformityQuery {Id = id});
-
-                var createNonConformityCommand = new CreateNonConformityCommand
+                await Mediator.Send(new CreateNonConformityRevisionCommand()
                 {
-                    Description = nonConformity.Description
-                };
-
-
+                    Id = id
+                });
             }
 
             return NoContent();
