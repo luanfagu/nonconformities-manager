@@ -25,15 +25,14 @@ namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformit
 
             public async Task<long> Handle(CreateNonConformityCommand request, CancellationToken cancellationToken)
             {
-                var dateTime = new DateTime();
-                var lastIdentity = _context.NonConformities.Where(n => n.Year == dateTime.Year)
+                var lastIdentity = _context.NonConformities.Where(n => n.Year == DateTime.Now.Year)
                     .OrderByDescending(n => n.Identity).Select(n => n.Identity).FirstOrDefault();
 
                 var entity = new NonConformity
                 {
                     Description = request.Description
                     , Status = (int) NonConformityStatus.Open
-                    , Year = dateTime.Year
+                    , Year = DateTime.Now.Year
                     , Identity = lastIdentity + 1
                     , Revision = 0
                 };
