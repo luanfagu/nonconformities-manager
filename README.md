@@ -1,53 +1,18 @@
- <img align="left" width="116" height="116" src="https://raw.githubusercontent.com/JasonGT/TesteQualyteam/master/.github/icon.png" />
- 
- # Clean Architecture Solution Template
-[![Clean.Architecture.Solution.Template NuGet Package](https://img.shields.io/badge/nuget-1.0.4-blue)](https://www.nuget.org/packages/Clean.Architecture.Solution.Template)
-[![Twitter Follow](https://img.shields.io/twitter/follow/jasongtau.svg?style=social&label=Follow)](https://twitter.com/jasongtau)
-
-<br/>
-
-This is a solution template for creating a Single Page App (SPA) with Angular 8 and ASP.NET Core 3 following the principles of Clean Architecture. Create a new project based on this template by clicking the above **Use this template** button or by installing and running the associated NuGet package (see Getting Started for full details). 
+Este é um projeto para o desafio tecnico proposto pela Qualyteam.
 
 
-## Technologies
+## Tecnologias utilizadas
 * .NET Core 3
-* ASP .NET Core 3
 * Entity Framework Core 3
-* Angular 8
+* PostgreSQL
 
-## Getting Started
+## Como executar
 
-The easiest way to get started is to install the [NuGet package](https://www.nuget.org/packages/Clean.Architecture.Solution.Template) and run `dotnet new ca-sln`:
+Primeiramente deve-se criar um banco de dados no postgres com o nome *testeQualyteam* para que seja possivel da aplicação criar as migrations necessarias para seu funcionamento.
 
-1. Install the latest [.NET Core SDK](https://dotnet.microsoft.com/download)
-2. Run `dotnet new --install Clean.Architecture.Solution.Template` to install the project template
-3. Run `dotnet new ca-sln` to create a new project
-4. Navigate to `src/WebUI` and run `dotnet run` to launch the project
+Caso queira alterar o nome do banco e os dados de acesso, a string de conexão se encontra no arquivo *appsettings.json* dentro do projeto *API*
 
-## Overview
-
-### Domain
-
-This will contain all entities, enums, exceptions, interfaces, types and logic specific to the domain layer.
-
-
-### Application
-
-This layer contains all application logic. It is dependent on the domain layer, but has no dependencies on any other layer or project. This layer defines interfaces that are implemented by outside layers. For example, if the application need to access a notification service, a new interface would be added to application and an implementation would be created within infrastructure.
-
-
-### Infrastructure
-
-This layer contains classes for accessing external resources such as file systems, web services, smtp, and so on. These classes should be based on interfaces defined within the application layer.
-
-### WebUI
-
-This layer is a single page application based on Angular 8 and ASP.NET Core 3. This layer depends on both the Application and Infrastructure layers, however, the dependency on Infrastructure is only to support dependency injection. Therefore only *Startup.cs* should reference Infrastructure.
-
-## Support
-
-If you are having problems, please let us know by [raising a new issue](https://github.com/JasonGT/TesteQualyteam/issues/new/choose).
-
-## License
-
-This project is licensed with the [MIT license](LICENSE).
+1. Instalar a ultima versão do .NET Core SDK (caso já não tenha)
+2. Navegue para a pasta do projeto utilizando `cd src\Api\`
+3. Após isso você precisa atualizar o banco utilizando `dotnet ef database update`
+2. Para iniciar o servidor `dotnet run`
