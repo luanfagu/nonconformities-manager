@@ -74,7 +74,9 @@ namespace TesteQualyteam.Api.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     LastModifiedBy = table.Column<string>(nullable: true),
                     LastModified = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(nullable: true),
+                    Year = table.Column<int>(nullable: false),
+                    Identity = table.Column<int>(nullable: false),
+                    Revision = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },

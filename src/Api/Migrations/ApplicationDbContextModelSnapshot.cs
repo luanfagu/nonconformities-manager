@@ -275,9 +275,6 @@ namespace TesteQualyteam.Api.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Code")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp without time zone");
 
@@ -287,13 +284,22 @@ namespace TesteQualyteam.Api.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<int>("Identity")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
 
+                    b.Property<int>("Revision")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Year")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
