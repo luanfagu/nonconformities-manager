@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using MediatR;
 using TesteQualyteam.Application.Common.Exceptions;
 using TesteQualyteam.Application.Common.Interfaces;
-using TesteQualyteam.Application.TodoItems.Commands.UpdateTodoItem;
 using TesteQualyteam.Domain.Entities;
 
 namespace TesteQualyteam.Application.NonConformities.Commands.UpdateNonConformityStatus

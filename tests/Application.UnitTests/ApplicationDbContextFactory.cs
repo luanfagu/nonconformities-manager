@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Moq;
 using System;
+using Action = TesteQualyteam.Domain.Entities.Action;
 
 namespace TesteQualyteam.Application.UnitTests.Common
 {
@@ -44,18 +45,15 @@ namespace TesteQualyteam.Application.UnitTests.Common
         }
 
         public static void SeedSampleData(ApplicationDbContext context)
-        {
-            context.TodoLists.AddRange(
-                new TodoList { Id = 1, Title = "Shopping" }
-            );
+        { 
+            context.NonConformities.AddRange(
+                new NonConformity() {Id = 1, Description = "NonConformity test", Year = DateTime.Now.Year, Identity = 1, Revision = 0}
+                , new NonConformity() {Id = 2, Description = "NonConformity test", Year = DateTime.Now.Year, Identity = 1, Revision = 1 }
+                );
 
-            context.TodoItems.AddRange(
-                new TodoItem { Id = 1, ListId = 1, Title = "Bread", Done = true },
-                new TodoItem { Id = 2, ListId = 1, Title = "Butter", Done = true },
-                new TodoItem { Id = 3, ListId = 1, Title = "Milk" },
-                new TodoItem { Id = 4, ListId = 1, Title = "Sugar" },
-                new TodoItem { Id = 5, ListId = 1, Title = "Coffee" }
-            );
+            context.Actions.AddRange(
+                new Action() { Id = 1, Description = "Test action 1", NonConformityId = 1}
+                );
 
             context.SaveChanges();
         }

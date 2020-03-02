@@ -10,11 +10,11 @@ using TesteQualyteam.Domain.Enums;
 
 namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformity
 {
-    public class CreateNonConformityCommand : IRequest<long>
+    public class CreateNonConformityCommand : IRequest<int>
     {
         public string Description { get; set; }
 
-        public class CreateNonConformitiesCommandHandler : IRequestHandler<CreateNonConformityCommand, long>
+        public class CreateNonConformitiesCommandHandler : IRequestHandler<CreateNonConformityCommand, int>
         {
             private readonly IApplicationDbContext _context;
 
@@ -23,7 +23,7 @@ namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformit
                 _context = context;
             }
 
-            public async Task<long> Handle(CreateNonConformityCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(CreateNonConformityCommand request, CancellationToken cancellationToken)
             {
                 var lastIdentity = _context.NonConformities.Where(n => n.Year == DateTime.Now.Year)
                     .OrderByDescending(n => n.Identity).Select(n => n.Identity).FirstOrDefault();

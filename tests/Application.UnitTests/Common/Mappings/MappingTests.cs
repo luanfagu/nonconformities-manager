@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using TesteQualyteam.Application.TodoLists.Queries.GetTodos;
 using TesteQualyteam.Domain.Entities;
 using System;
+using TesteQualyteam.Application.NonConformities.Queries.GetNonConformity;
 using Xunit;
+using Action = TesteQualyteam.Domain.Entities.Action;
 
 namespace TesteQualyteam.Application.UnitTests.Common.Mappings
 {
@@ -24,8 +25,8 @@ namespace TesteQualyteam.Application.UnitTests.Common.Mappings
         }
         
         [Theory]
-        [InlineData(typeof(TodoList), typeof(TodoListDto))]
-        [InlineData(typeof(TodoItem), typeof(TodoItemDto))]
+        [InlineData(typeof(NonConformity), typeof(NonConformityDto))]
+        [InlineData(typeof(Action), typeof(ActionDto))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             var instance = Activator.CreateInstance(source);

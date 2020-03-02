@@ -8,7 +8,7 @@ namespace TesteQualyteam.Api.Controllers
     public class ActionsController : ApiController
     {
         [HttpPost]
-        public async Task<ActionResult<long>> Create(CreateActionCommand command)
+        public async Task<ActionResult<int>> Create(CreateActionCommand command)
         {
             return await Mediator.Send(command);
         }

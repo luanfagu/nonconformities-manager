@@ -10,11 +10,11 @@ using TesteQualyteam.Domain.Enums;
 
 namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformityRevision
 {
-    public class CreateNonConformityRevisionCommand : IRequest<long>
+    public class CreateNonConformityRevisionCommand : IRequest<int>
     {
         public int Id { get; set; }
 
-        public class CreateNonConformityRevisionCommandHandler : IRequestHandler<CreateNonConformityRevisionCommand, long>
+        public class CreateNonConformityRevisionCommandHandler : IRequestHandler<CreateNonConformityRevisionCommand, int>
         {
             private readonly IApplicationDbContext _context;
 
@@ -23,7 +23,7 @@ namespace TesteQualyteam.Application.NonConformities.Commands.CreateNonConformit
                 _context = context;
             }
 
-            public async Task<long> Handle(CreateNonConformityRevisionCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(CreateNonConformityRevisionCommand request, CancellationToken cancellationToken)
             {
                 var baseNonConformity = await _context.NonConformities.FindAsync(request.Id);
 

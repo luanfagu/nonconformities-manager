@@ -4,8 +4,6 @@ using TesteQualyteam.Application.NonConformities.Commands.CreateNonConformity;
 using TesteQualyteam.Application.NonConformities.Commands.CreateNonConformityRevision;
 using TesteQualyteam.Application.NonConformities.Commands.UpdateNonConformityStatus;
 using TesteQualyteam.Application.NonConformities.Queries.GetNonConformity;
-using TesteQualyteam.Application.TodoItems.Commands.CreateTodoItem;
-using TesteQualyteam.Application.TodoItems.Commands.UpdateTodoItem;
 using TesteQualyteam.Domain.Enums;
 
 namespace TesteQualyteam.Api.Controllers
@@ -19,7 +17,7 @@ namespace TesteQualyteam.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<long>> Create(CreateNonConformityCommand command)
+        public async Task<ActionResult<int>> Create(CreateNonConformityCommand command)
         {
             return await Mediator.Send(command);
         }

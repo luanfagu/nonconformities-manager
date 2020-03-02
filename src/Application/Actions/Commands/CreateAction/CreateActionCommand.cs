@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TesteQualyteam.Application.Actions.Commands.CreateAction
 {
-    public class CreateActionCommand : IRequest<long>
+    public class CreateActionCommand : IRequest<int>
     {
         public int NonConformityId { get; set; }
 
         public string Description { get; set; }
 
-        public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, long>
+        public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, int>
         {
             private readonly IApplicationDbContext _context;
 
@@ -21,7 +21,7 @@ namespace TesteQualyteam.Application.Actions.Commands.CreateAction
                 _context = context;
             }
 
-            public async Task<long> Handle(CreateActionCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(CreateActionCommand request, CancellationToken cancellationToken)
             {
                 var entity = new Action
                 {

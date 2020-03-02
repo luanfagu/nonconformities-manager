@@ -6,7 +6,6 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TesteQualyteam.Application.Common.Interfaces;
-using TesteQualyteam.Application.TodoLists.Queries.GetTodos;
 
 namespace TesteQualyteam.Application.NonConformities.Queries.GetNonConformity
 {

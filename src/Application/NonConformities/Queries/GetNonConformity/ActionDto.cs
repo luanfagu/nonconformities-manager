@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using TesteQualyteam.Application.Common.Mappings;
-using TesteQualyteam.Application.TodoLists.Queries.GetTodos;
 using TesteQualyteam.Domain.Entities;
 
 namespace TesteQualyteam.Application.NonConformities.Queries.GetNonConformity
