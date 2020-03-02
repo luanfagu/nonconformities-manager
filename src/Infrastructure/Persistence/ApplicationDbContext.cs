@@ -26,10 +26,6 @@ namespace TesteQualyteam.Infrastructure.Persistence
             _dateTime = dateTime;
         }
 
-        public DbSet<TodoList> TodoLists { get; set; }
-
-        public DbSet<TodoItem> TodoItems { get; set; }
-
         public DbSet<NonConformity> NonConformities {get; set;}
         public DbSet<Action> Actions { get; set; }
 
